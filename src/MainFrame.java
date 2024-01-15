@@ -6,9 +6,11 @@ import java.awt.event.MouseWheelEvent;
 import java.util.ArrayList;
 
 public class MainFrame extends JFrame {
-    public ArrayList<Rectangle> rectangles = new ArrayList<>();
+    public ArrayList<Rectangle> rectangles = new ArrayList<Rectangle>();
     private Point startPoint;
     private Point endPoint;
+    private Timer timer;
+    Thread t;
     public MainFrame() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
@@ -21,7 +23,7 @@ public class MainFrame extends JFrame {
                 super.paintComponent(g);
                 for (Rectangle rect : rectangles) {
                     g.drawRect(rect.x, rect.y, rect.width, rect.height);
-                    //rect.fall(rect);
+                    rect.fall(rect);
                 }
                 if (startPoint != null && endPoint != null) {
                     int x = Math.min(startPoint.x, endPoint.x);
@@ -30,7 +32,16 @@ public class MainFrame extends JFrame {
                     int height = Math.abs(startPoint.y - endPoint.y);
                     g.drawRect(x, y, width, height);
                 }
-            }
+
+                }
+
+//            Timer timer= new Timer(50, e -> {
+//                for (Rectangle rect : rectangles) {
+//                    rect.fall(rect);
+//                    //rect.y += 5;
+//                    repaint();
+//                }
+//            });
         };
 
         mainPanel.addMouseListener(new MouseAdapter() {
@@ -49,11 +60,11 @@ public class MainFrame extends JFrame {
                 mainPanel.repaint();
             }
 
-            @Override
-            public void mouseDragged(MouseEvent e) {
-                endPoint = e.getPoint();
-                mainPanel.repaint();
-            }
+//            @Override
+//            public void mouseDragged(MouseEvent e) {
+//                endPoint = e.getPoint();
+//                mainPanel.repaint();
+//            }
         });
 
 

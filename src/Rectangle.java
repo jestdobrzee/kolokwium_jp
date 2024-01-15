@@ -1,19 +1,32 @@
-//import java.util.Timer;
-//
-//public class Rectangle {
-//    public int x;
-//    public int y;
-//    public int width;
-//    public int height;
-//    private Timer timer;
-//    public Rectangle(int x, int y, int width, int height){
-//
+import java.util.Timer;
+
+public class Rectangle //implements Runnable {
+{
+
+    public int x;
+    public int y;
+    public int width;
+    public int height;
+
+
+    public Rectangle(int x, int y, int width, int height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+    }
+
+    public void fall(Rectangle rectangle) {
+        //while(rectangle.y>0){
+        y += 10;
+        //repaint();
+        //}
+        //return 0;
+    }
+}
+
+//    @Override
+//    public void run(Rectangle.this) {
+//        fall();
 //    }
-//
-//    public int fall(Rectangle rectangle){
-//        while(rectangle.y>0){
-//
-//        }
-//        return 0;
-//    }
-//}
+
